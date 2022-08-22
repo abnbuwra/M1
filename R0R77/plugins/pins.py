@@ -20,7 +20,7 @@ PINS_TEXT = """
 ‣ `!الرسائل المثبتة`
 لأظهار الرسائل المثبتة في المجموعة
 
-@jmthon
+@x02x2
 """
 
 @R0R77.on(events.NewMessage(pattern="^[?!/]الرسائل المثبتة"))
@@ -47,7 +47,7 @@ async def pin(event, perm):
        return
     await R0R77.pin_message(event.chat_id, msg)   
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]الغاء تثبيت ?(.*)"))
+@R4005.on(events.NewMessage(pattern="^[!?/]الغاء تثبيت ?(.*)"))
 @is_admin
 async def unpin(event, perm):
     if not perm.pin_messages:
@@ -59,7 +59,7 @@ async def unpin(event, perm):
     await event.reply(f"تم بنجاح الغاء التثبيت [لهذه الرسالة](t.me/{event.chat.username}/{ok.id}).", link_preview=False)
 
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]الغاء التثبيت للكل$"))
+@R4005.on(events.NewMessage(pattern="^[!?/]الغاء التثبيت للكل$"))
 async def unpinall(event, perm):
     if not perm.pin_messages:
        await event.reply("يجب ان تمتلك صلاحيات التثببيت اولا")
@@ -72,7 +72,7 @@ async def unpinall(event, perm):
     [Button.inline("تأكيد", data="unpin")], 
     [Button.inline("الغاء", data="cancel")]])
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="unpin"))
+@R4005.on(events.callbackquery.CallbackQuery(data="unpin"))
 async def confirm(event):
     check = await event.client.get_permissions(event.chat_id, event.sender_id)
     if check.is_creator:
@@ -82,7 +82,7 @@ async def confirm(event):
 
     await event.answer("يجب ان تكون مالك المجموعة اولا")
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="cancel"))
+@R4005.on(events.callbackquery.CallbackQuery(data="cancel"))
 async def cancel(event):
 
     check = await event.client.get_permissions(event.chat_id, event.sender_id)
@@ -93,7 +93,7 @@ async def cancel(event):
     await event.answer("يجب ان تكون مالك المجموعة اولا")
 
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="pins"))
+@R4005.on(events.callbackquery.CallbackQuery(data="pins"))
 async def _(event):
 
     await event.edit(PINS_TEXT, buttons=[[Button.inline("رجوع", data="help")]])
