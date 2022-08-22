@@ -7,17 +7,17 @@ from telethon.tl.types import ChatAdminRights
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.functions.messages import ExportChatInviteRequest
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="admin"))
+@R4005.on(events.callbackquery.CallbackQuery(data="admin"))
 async def _(event):
 
     await event.edit(ADMIN_TEXT, buttons=[[Button.inline("« رجوع", data="help")]])
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="play"))
+@R4005.on(events.callbackquery.CallbackQuery(data="play"))
 async def _(event):
 
     await event.edit(PLAY_TEXT, buttons=[[Button.inline("« رجوع", data="help")]])
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]رفع ?(.*)"))
+@R4005.on(events.NewMessage(pattern="^[!?/]رفع ?(.*)"))
 @is_admin
 async def promote(event, perm):
     if event.is_private:
@@ -32,8 +32,8 @@ async def promote(event, perm):
     if not input_str and not user:
         await event.reply("يجب عليك الرد على المستخدم لرفعه ")
         return
-    sed = await R0R77(GetFullUserRequest(id=user.sender_id or input_str))
-    await R0R77(EditAdminRequest(event.chat_id, user.sender_id or input_str, ChatAdminRights(
+    sed = await R4005(GetFullUserRequest(id=user.sender_id or input_str))
+    await R4005(EditAdminRequest(event.chat_id, user.sender_id or input_str, ChatAdminRights(
                     add_admins=False,
                     invite_users=True,
                     change_info=False,
@@ -47,7 +47,7 @@ async def promote(event, perm):
 
     await event.reply(f"تم بنجاح رفع المستخدم {input_str} in {event.chat.title}")
  
-@R0R77.on(events.NewMessage(pattern="^[!?/]تنزيل ?(.*)"))
+@R4005.on(events.NewMessage(pattern="^[!?/]تنزيل ?(.*)"))
 @is_admin
 async def promote(event, perm):
     if event.is_private:
@@ -61,8 +61,8 @@ async def promote(event, perm):
     if not input_str and not user:
         await event.reply("يجب عليك الرد على المستخدم الذي تريد تنزيله")
         return
-    sed = await R0R77(GetFullUserRequest(id=user.sender_id or input_str))
-    await R0R77(EditAdminRequest(event.chat_id, user.sender_id or input_str, ChatAdminRights(
+    sed = await R4005(GetFullUserRequest(id=user.sender_id or input_str))
+    await R4005(EditAdminRequest(event.chat_id, user.sender_id or input_str, ChatAdminRights(
                     add_admins=False,
                     invite_users=None,
                     change_info=None,
@@ -77,7 +77,7 @@ async def promote(event, perm):
     await event.reply(f"- تم بنجاح تنزيل {input_str} in {event.chat.title}")
  
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]الرابط"))
+@R4005.on(events.NewMessage(pattern="^[!?/]الرابط"))
 async def invitelink(event):
 
     if event.is_private:
