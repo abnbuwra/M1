@@ -15,7 +15,7 @@ LOCKS_HELP = """
 لعرض الصلاحيات التي يمكنك قفلها
 """
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]قفل ?(.*)"))
+@R4005.on(events.NewMessage(pattern="^[!?/]قفل ?(.*)"))
 @is_admin
 async def lock(event, perm):
     if not perm.change_info:
@@ -26,34 +26,34 @@ async def lock(event, perm):
        await event.reply("يرجى تحديد شيء لقفله اولا")
        return
     if "الرسائل" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_messages=False)
+       await R4005.edit_permissions(event.chat_id, send_messages=False)
        await event.reply("- تم قفل الرسائل")
     elif "الميديا" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_media=False)
+       await R4005.edit_permissions(event.chat_id, send_media=False)
        await event.reply("- تم قفل الوسائط")
     elif "الملصقات" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_stickers=False)
+       await R4005.edit_permissions(event.chat_id, send_stickers=False)
        await event.reply("- تم قفل الملصقات.")
     elif "المتحركة"in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_gifs=False)
+       await R4005.edit_permissions(event.chat_id, send_gifs=False)
        await event.reply("- تم قفل المتحركة")
     elif "التوجيه" in input_str:
-       await R0R77.edit_permissions(event.chat_id, forwards=False)
+       await R4005.edit_permissions(event.chat_id, forwards=False)
        await event.reply("- تم قفل التوجيه")
     elif "الالعاب" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_games=False)
+       await R4005.edit_permissions(event.chat_id, send_games=False)
        await event.reply("- تم قفل الالعاب")
     elif "الانلاين" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_inline=False)
+       await R4005.edit_permissions(event.chat_id, send_inline=False)
        await event.reply("- تم قفل الانلاين")
     elif "التصويت" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_polls=False)
+       await R4005.edit_permissions(event.chat_id, send_polls=False)
        await event.reply("- تم قفل التصويت")
     elif "الروابط" in input_str:
-       await R0R77.edit_permissions(event.chat_id, embed_link_previews=False)
+       await R4005.edit_permissions(event.chat_id, embed_link_previews=False)
        await event.reply("- تم قفل الروابط")
     elif "الكل" in input_str:
-       await R0R77.edit_permissions(event.chat_id,
+       await R4005.edit_permissions(event.chat_id,
           send_messages=False, 
           send_media=False,
           send_stickers=False,
@@ -76,34 +76,34 @@ async def unlock(event, perm):
        await event.reply("يرجى تحديد شيء لالغاء قفله اولا")
        return
     if "الرسائل" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_messages=True)
+       await R4005.edit_permissions(event.chat_id, send_messages=True)
        await event.reply("تم فتح الكتابة")
     elif "الميديا" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_media=True)
+       await R4005.edit_permissions(event.chat_id, send_media=True)
        await event.reply("تم فتح الوسائط")
     elif "الملصقات" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_stickers=True)
+       await R4005.edit_permissions(event.chat_id, send_stickers=True)
        await event.reply("تم فتح الملصقات")
     elif "المتحركة"in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_gifs=True)
+       await R4005.edit_permissions(event.chat_id, send_gifs=True)
        await event.reply("تم فتح المتحركة")
     elif "التوجيه" in input_str:
-       await R0R77.edit_permissions(event.chat_id, forwards=True)
+       await R4005.edit_permissions(event.chat_id, forwards=True)
        await event.reply("تم فتح التوجيه")
     elif "الالعاب" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_games=True)
+       await R4005.edit_permissions(event.chat_id, send_games=True)
        await event.reply("تم فتح الالعاب")
     elif "الانلاين" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_inline=True)
+       await R4005.edit_permissions(event.chat_id, send_inline=True)
        await event.reply("تم فتح الانلاين")
     elif "التصويت" in input_str:
-       await R0R77.edit_permissions(event.chat_id, send_polls=True)
+       await R4005.edit_permissions(event.chat_id, send_polls=True)
        await event.reply("تم فتح `التصويت")
     elif "الروابط" in input_str:
-       await R0R77.edit_permissions(event.chat_id, embed_link_previews=True)
+       await R4005.edit_permissions(event.chat_id, embed_link_previews=True)
        await event.reply("تم فتح الروابط")
     elif "الكل" in input_str:
-       await R0R77.edit_permissions(event.chat_id,
+       await R4005.edit_permissions(event.chat_id,
           send_messages=True, 
           send_media=True,
           send_stickers=True,
@@ -115,7 +115,7 @@ async def unlock(event, perm):
        await event.reply("تم فتح الكل")
 
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]الصلاحيات"))
+@R4005.on(events.NewMessage(pattern="^[!?/]الصلاحيات"))
 async def locktypes(event):
     TEXT = """
 **Locks:**
