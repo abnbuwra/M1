@@ -1,5 +1,5 @@
 from telethon import events, Button
-from R4005 import R0R77, BOT_USERNAME
+from R4005 import R4005, BOT_USERNAME
 
 btn =[
     [Button.inline("الادمن", data="admin"),],
