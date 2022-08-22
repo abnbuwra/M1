@@ -1,5 +1,5 @@
 from telethon import events, Button
-from R0R77 import R0R77, BOT_USERNAME
+from R4005 import R0R77, BOT_USERNAME
 
 btn =[
     [Button.inline("الادمن", data="admin"),],
@@ -8,10 +8,10 @@ btn =[
     [Button.inline("القفل", data="locks"), Button.inline("اخرى", data="misc")],
     [Button.inline("الئيسية", data="start")]]
 
-HELP_TEXT = "اهلا بك في قائمة اوامر سورس جمثون\n\nاضغط على الازرار من الاسفل:"
+HELP_TEXT = "اهلا بك في قائمة اوامر سورس ابن الدورة\n\nاضغط على الازرار من الاسفل:"
 
 
-@R0R77.on(events.NewMessage(pattern="[!?/]الاوامر"))
+@R4005.on(events.NewMessage(pattern="[!?/]الاوامر"))
 async def help(event):
 
     if event.is_group:
@@ -21,12 +21,12 @@ async def help(event):
 
     await event.reply(HELP_TEXT, buttons=btn)
 
-@R0R77.on(events.NewMessage(pattern="^/start help"))
+@R4005.on(events.NewMessage(pattern="^/start help"))
 async def _(event):
 
     await event.reply(HELP_TEXT, buttons=btn)
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="help"))
+@R4005.on(events.callbackquery.CallbackQuery(data="help"))
 async def _(event):
 
      await event.edit(HELP_TEXT, buttons=btn)
