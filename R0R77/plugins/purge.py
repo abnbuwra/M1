@@ -14,7 +14,7 @@ PR_HELP = """
 
 """
 
-@R0R77.on(events.NewMessage(pattern=r"^[?!]تنظيف"))
+@R4005.on(events.NewMessage(pattern=r"^[?!]تنظيف"))
 @is_admin
 async def purge_messages(event, perm):
     if not perm.delete_messages:
@@ -44,7 +44,7 @@ async def purge_messages(event, perm):
 
 
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]مسح$"))
+@R4005.on(events.NewMessage(pattern="^[!?/]مسح$"))
 @is_admin
 async def delete_messages(event, perm):
     if not perm.delete_messages:
@@ -58,6 +58,6 @@ async def delete_messages(event, perm):
     await msg.delete()
     await event.delete()
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="purges"))
+@R4005.on(events.callbackquery.CallbackQuery(data="purges"))
 async def _(event):
     await event.edit(PR_HELP, buttons=[[Button.inline("رجوع", data="help")]])
